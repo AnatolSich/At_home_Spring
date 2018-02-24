@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "students")
-public class User {
+public class Student {
 
     @Id
     @Column(name = "id")
