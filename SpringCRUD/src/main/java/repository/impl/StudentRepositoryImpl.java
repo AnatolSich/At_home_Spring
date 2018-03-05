@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import repository.StudentRepository;
 
@@ -22,7 +23,7 @@ public class StudentRepositoryImpl implements StudentRepository {
         Session session = sessionFactory.getCurrentSession();
         session.save(student);
     }
-
+    @Override
     public void removeStudent(Integer id) {
         if (id != null) {
             Session session = sessionFactory.getCurrentSession();
@@ -32,7 +33,7 @@ public class StudentRepositoryImpl implements StudentRepository {
             }
         } else throw new RuntimeException("Id is null");
     }
-
+    @Override
     public void updateStudent(Student student) {
         Session session = sessionFactory.getCurrentSession();
         Student existingStudent = session.get(Student.class, student.getId());
@@ -40,12 +41,12 @@ public class StudentRepositoryImpl implements StudentRepository {
         existingStudent.setExtramural(student.getExtramural());
         session.update(existingStudent);
     }
-
+    @Override
     public List<Student> getAllStud() {
         Session session = sessionFactory.getCurrentSession();
         return (List<Student>) session.createQuery("from Student").list();
     }
-
+    @Override
     public Student getStudent(Integer id) {
         if (id != null) {
             Session session = sessionFactory.getCurrentSession();

@@ -7,6 +7,6 @@ CREATE SEQUENCE global_stud_seq
 CREATE TABLE students (
   id           INTEGER PRIMARY KEY DEFAULT nextval('global_stud_seq'),
   name         VARCHAR(255) NOT NULL,
-  isExtramural BOOL                DEFAULT TRUE,
+  isExtramural BOOL,
   createdDate  TIMESTAMP           DEFAULT now()
 );

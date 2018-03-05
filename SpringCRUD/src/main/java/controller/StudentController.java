@@ -32,10 +32,11 @@ public class StudentController {
 
     @RequestMapping(value = "addStudent", method = RequestMethod.POST)
     public String addStudent(@RequestParam(value = "name") String name
-            , @RequestParam(value = "isExtramural", defaultValue = "true") Boolean isExtramural){
+            , @RequestParam(value = "isExtramural", defaultValue = "false") Boolean isExtramural){
         Student student = new Student();
         student.setName(name);
         student.setExtramural(isExtramural);
+        student.setCreatedDate();
         studentRepository.addStudent(student);
         return "redirect:/";
     }
@@ -54,7 +55,7 @@ public class StudentController {
 
     @RequestMapping(value = "updateStudent/{id}", method = RequestMethod.POST)
     public String postUpdate(@RequestParam(value = "name") String name
-            , @RequestParam(value = "isExtramural", defaultValue = "true") Boolean isExtramural
+            , @RequestParam(value = "extramural", defaultValue = "false") Boolean isExtramural
             , @PathVariable Integer id){
         Student student = studentRepository.getStudent(id);
         student.setName(name);

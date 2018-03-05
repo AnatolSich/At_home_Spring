@@ -5,6 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "students")
@@ -14,7 +17,7 @@ public class Student {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @NotNull
-    private Integer id;
+    private int id;
 
     @Column(name = "name")
     @NotNull
@@ -26,16 +29,10 @@ public class Student {
     private Boolean isExtramural;
 
     @Column(name = "createdDate")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Timestamp createdDate;
 
-    public Integer getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -58,7 +55,10 @@ public class Student {
         return createdDate;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
+    public void setCreatedDate() {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String dateStr = format.format(timestamp);
+        this.createdDate = Timestamp.valueOf(dateStr);
     }
 }
