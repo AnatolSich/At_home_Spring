@@ -50,6 +50,7 @@ public class BookDaoImpl implements BookDao {
             bookExist.setTitle(book.getTitle());
             bookExist.setAuthor(book.getAuthor());
             bookExist.setPages(book.getPages());
+
             session.saveOrUpdate(bookExist);
         }
     }
