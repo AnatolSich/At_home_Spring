@@ -15,6 +15,7 @@
 </head>
 <body>
 <c:url var="url" value="/updateStudent/${studentAttribute.id}"/>
+
 <form:form method="post" action="${url}" modelAttribute="studentAttribute">
     <table border="1">
         <tr>

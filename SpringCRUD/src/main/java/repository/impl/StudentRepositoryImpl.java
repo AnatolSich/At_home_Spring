@@ -41,11 +41,14 @@ public class StudentRepositoryImpl implements StudentRepository {
         existingStudent.setExtramural(student.getExtramural());
         session.update(existingStudent);
     }
+
     @Override
+    @SuppressWarnings("unchecked")
     public List<Student> getAllStud() {
         Session session = sessionFactory.getCurrentSession();
         return (List<Student>) session.createQuery("from Student").list();
     }
+
     @Override
     public Student getStudent(Integer id) {
         if (id != null) {
