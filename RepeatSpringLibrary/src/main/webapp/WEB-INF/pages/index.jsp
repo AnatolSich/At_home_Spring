@@ -31,15 +31,15 @@
         <tr>
             <td>${student.name}</td>
             <td>${student.age}</td>
-            <td><fmt:formatDate value="${student.regDate}" pattern="MM.dd.yyyy"></fmt:formatDate> </td>
-            <td><spring:checkbox path="${student.isAdmin}" value=""></spring:checkbox> </td>
-            <td><a href="updateStudent/${student.id}">Update</a> </td>
-            <td><a href="deleteStudent/${student.id}">Delete</a> </td>
-            <td><a href="listBooks/${student.id}">List students</a> </td>
+            <td><fmt:formatDate value="${student.regDate}" pattern="MM.dd.yyyy"></fmt:formatDate></td>
+            <td>${student.admin}</td>
+            <td><a href="updateStudent/${student.id}">Update</a></td>
+            <td><a href="deleteStudent/${student.id}">Delete</a></td>
+            <td><a href="listBooks/${student.id}">List students</a></td>
         </tr>
     </c:forEach>
     <tr>
-        <td><a href="addStudent">Add student</a> </td>
+        <td><a href="addStudent">Add student</a></td>
     </tr>
 </table>
 

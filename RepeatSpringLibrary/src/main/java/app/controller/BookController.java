@@ -3,6 +3,7 @@ package app.controller;
 import app.dao.BookDao;
 import app.model.Book;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServlet;
 import java.util.List;
 
+@Controller
 public class BookController extends HttpServlet {
 
     @Autowired
     private BookDao bookDao;
-
-
 
     @RequestMapping(value = "books/{studId}", method = RequestMethod.GET)
     public String getBooksByStudId(@PathVariable int studId, Model model) {

@@ -29,7 +29,7 @@ public class StudentDaoImpl implements StudentDao{
     @Override
     public List getAllStudents() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createQuery("from student").list();
+        return session.createQuery("from Student").list();
     }
 
     @Override
@@ -44,8 +44,7 @@ public class StudentDaoImpl implements StudentDao{
         Student studentExist =  session.get(Student.class,student.getId());
         studentExist.setAge(student.getAge());
         studentExist.setName(student.getName());
-        studentExist.setIsAdmin(student.getIsAdmin());
-        studentExist.setRegDate(student.getRegDate());
+        studentExist.setAdmin(student.isAdmin());
         session.saveOrUpdate(studentExist);
     }
 

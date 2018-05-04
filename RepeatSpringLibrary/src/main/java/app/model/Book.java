@@ -23,8 +23,7 @@ public class Book {
     @NotNull
     private int pages;
 
-
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 

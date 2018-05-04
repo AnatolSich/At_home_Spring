@@ -66,12 +66,12 @@ public class Student {
         this.regDate = new Timestamp(System.currentTimeMillis());
     }
 
-    public boolean getIsAdmin() {
+    public boolean isAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        isAdmin = isAdmin;
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 
     public List<Book> getBooks() {

@@ -3,6 +3,7 @@ package app.controller;
 import app.dao.StudentDao;
 import app.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServlet;
 
+@Controller
 public class StudentController extends HttpServlet {
 
     @Autowired
@@ -35,7 +37,7 @@ public class StudentController extends HttpServlet {
         student.setName(name);
         student.setAge(age);
         student.setRegDate();
-        student.setIsAdmin(isAdmin);
+        student.setAdmin(isAdmin);
         studentDao.addStudent(student);
         return "redirect:/";
     }
@@ -50,11 +52,11 @@ public class StudentController extends HttpServlet {
     public String updateStudent(@PathVariable int id,
                                 @RequestParam("name") String name,
                                 @RequestParam("age") int age,
-                                @RequestParam("iaAdmin") boolean isAdmin) {
+                                @RequestParam(value = "isAdmin", defaultValue = "false") boolean isAdmin) {
         Student existStudent = studentDao.getStudentById(id);
         existStudent.setName(name);
         existStudent.setAge(age);
-        existStudent.setIsAdmin(isAdmin);
+        existStudent.setAdmin(isAdmin);
         studentDao.updateStudent(existStudent);
         return "redirect:/";
     }
